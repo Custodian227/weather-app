@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    --main-app-color: #00B2A0;
+}
+
+#content {
+    margin: auto;
+}
+
+header {
+    box-shadow: 0ch 5px 20px 0px gray;
+}
+
+#header-content {
+    display: grid;
+    gap: 2rem;
+    padding: 1rem;
+    grid-template-columns: 2fr 3fr 2fr;
+}
+
+#title-container {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    width: auto;
+}
+
+#app-logo {
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-app-color);
+    margin-right: 0.5rem;
+    background-image: url('../assets/icons/icons8-meteor.png');
+    background-size: cover;
+    border-radius: 25%;
+}
+
+#search-section {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#location-input {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    flex: 1;
+    outline: 1px solid var(--main-app-color);
+    border: none;
+}
+
+#search-button {
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--main-app-color);;
+    border: 1px solid var(--main-app-color);
+    background-image: url('../assets/icons/icons8-search.png');
+    border-radius: 3px;
+}
+
+main {
+    width: max(50%, 500px);
+    padding: 2rem 0rem;
+    margin: auto;
+}
+
+#current-location-data-container {
+    margin-bottom: 2rem;
+}
+
+#current-location-data-container > div {
+    display: flex;
+    justify-content: center;
+}
+
+#current-location {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--main-app-color);
+}
+
+#right-now {
+    font-size: 1.5rem;    
+    margin: 0.5rem;
+}
+
+#current-weather-icon-container {
+    display: flex;
+    justify-content: center;
+}
+
+#current-weather-icon {
+    height: 100px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+#current-condition-container {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+#current-temperature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+#current-temperature-container > img {
+    width: 80px;
+    height: 80px;
+    margin-top: 0.5rem;
+}
+
+#current-temperature-value-container { 
+    font-size: 3rem;
+}
+
+#current-feels-like-container {
+    font-size: 1.25rem;
+}
+
+#current-temperature-unit {
+    margin-left: 0.33rem;
+    letter-spacing: -8px;
+}
+
+#current-feels-like-unit {
+    margin-left: 0.33rem;
+    letter-spacing: -3px;
+}
+
+#current-additional {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+#current-additional > div{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.additional-label {
+    font-size: 1.2rem;
+}
+
+.additional-value {
+    font-size: 1.5rem;
+}
+
+#current-additional img {
+    margin-right: 1rem;
+}
+
+
+
+

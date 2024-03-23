@@ -2,10 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/pages/index.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        assetModuleFilename: 'assets/[hash][ext][query]',
         clean: true,
     },
     devtool: 'inline-source-map',
@@ -38,7 +39,4 @@ module.exports = {
             title: 'Weather App',
         }),
     ],
-    optimization: {
-        runtimeChunk: 'single',
-    },
 };
