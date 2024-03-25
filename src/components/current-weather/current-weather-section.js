@@ -36,65 +36,87 @@ export function createCurrentWeatherSection() {
     const windIcon = document.createElement('img');
     const windDataContainer = document.createElement('div');
     const windParagraph = document.createElement('p');
-    const WindValueParagraph = document.createElement('p');
+    const windValueSpan = document.createElement('span');
+    const windValueUnitSpan = document.createElement('span');
 
     const currentHumidityContainer = document.createElement('div');
     const humidityIcon = document.createElement('img');
     const humidityDataContainer = document.createElement('div');
     const humidityParagraph = document.createElement('p');
-    const humidityValueParagraph = document.createElement('p');
+    const humidityValueSpan = document.createElement('span');
+    const humidityValueUnitSpan = document.createElement('span');
 
     const currentPressureContainer = document.createElement('div');
     const pressureIcon = document.createElement('img');
     const pressureDataContainer = document.createElement('div');
     const pressureParagraph = document.createElement('p');
-    const pressureValueParagraph = document.createElement('p');
+    const pressureValueSpan = document.createElement('span');
+    const pressureValueUnitSpan = document.createElement('span');
 
     const currentUvIndexContainer = document.createElement('div');
     const uvIndexIcon = document.createElement('img');
     const uvIndexDataContainer = document.createElement('div');
     const uvIndexParagraph = document.createElement('p');
-    const uvIndexValueParagraph = document.createElement('p');
+    const uvIndexValueSpan = document.createElement('span');
 
     //Assigning id selectors to current weather section elements
     currentWeatherDataContainer.id = 'current';
     currentLocationDataContainer.id = 'current-location-data-container';
+
     currentLocation.id = 'current-location';
     rightNowParagraph.id = 'right-now';
+
     currentWeatherIconContainer.id = 'current-weather-icon-container';
     currentWeatherIcon.id = 'current-weather-icon';
+
     currentConditionContainer.id = 'current-condition-container';
     currentConditionParagraph.id = 'current-condition';
+
     currentTemperatureContainer.id = 'current-temperature-container';
     currentTemperatureValuesContainer.id = 'current-temperature-values-container';
     currentTemperatureValueContainer.id = 'current-temperature-value-container';
     currentTemperatureValueSpan.id = 'current-temperature';
     currentTemperatureUnitSpan.id = 'current-temperature-unit';
+
     currentFeelsLikeContainer.id = 'current-feels-like-container';
     currentFeelsLikeValueSpan.id = 'current-feels-like';
     currentFeelsLikeUnitSpan.id = 'current-feels-like-unit';
+
     currentAdditionalContainer.id = 'current-additional';
+
     currentWindContainer.id = 'current-wind-container';
-    WindValueParagraph.id = 'current-wind';
+    windValueSpan.id = 'current-wind';
+    windValueUnitSpan.id = 'current-wind-unit';
+
     currentHumidityContainer.id = 'current-humidity-container';
-    humidityValueParagraph.id = 'current-humidity';
+    humidityValueSpan.id = 'current-humidity';
+    humidityValueUnitSpan.id = 'current-humidity-unit';
+
     currentPressureContainer.id = 'current-pressure-container';
-    pressureValueParagraph.id = 'current-pressure';
+    pressureValueSpan.id = 'current-pressure';
+    pressureValueUnitSpan.id = 'current-pressure-unit';
+
     currentUvIndexContainer.id = 'current-uv-container';
-    uvIndexValueParagraph.id = 'current-uv';
+    uvIndexValueSpan.id = 'current-uv';
 
     //Assigning class selectors to current weather section elements
     windParagraph.classList.add('additional-label');
-    WindValueParagraph.classList.add('additional-value');
+    windValueSpan.classList.add('additional-value');
+    windValueUnitSpan.classList.add('additional-value');
+
     humidityParagraph.classList.add('additional-label');
-    humidityValueParagraph.classList.add('additional-value');
+    humidityValueSpan.classList.add('additional-value');
+    humidityValueUnitSpan.classList.add('additional-value');
+
     pressureParagraph.classList.add('additional-label');
-    pressureValueParagraph.classList.add('additional-value');
+    pressureValueSpan.classList.add('additional-value');
+    pressureValueUnitSpan.classList.add('additional-value');
+
     uvIndexParagraph.classList.add('additional-label');
-    uvIndexValueParagraph.classList.add('additional-value');
+    uvIndexValueSpan.classList.add('additional-value');
 
     //Assigning property values to current weater section elements
-    rightNowParagraph.textContent = 'Currently';
+    rightNowParagraph.textContent = 'Right Now';
     windParagraph.textContent = 'Wind';
     humidityParagraph.textContent = 'Humidity';
     pressureParagraph.textContent = 'Pressure';
@@ -139,27 +161,31 @@ export function createCurrentWeatherSection() {
     currentWindContainer.appendChild(windIcon);
     currentWindContainer.appendChild(windDataContainer);
     windDataContainer.appendChild(windParagraph);
-    windDataContainer.appendChild(WindValueParagraph);
+    windDataContainer.appendChild(windValueSpan);
+    windDataContainer.appendChild(windValueUnitSpan);
 
     currentHumidityContainer.appendChild(humidityIcon);
     currentHumidityContainer.appendChild(humidityDataContainer);
     humidityDataContainer.appendChild(humidityParagraph);
-    humidityDataContainer.appendChild(humidityValueParagraph);
+    humidityDataContainer.appendChild(humidityValueSpan);
+    humidityDataContainer.appendChild(humidityValueUnitSpan);
 
     currentPressureContainer.appendChild(pressureIcon);
     currentPressureContainer.appendChild(pressureDataContainer);
     pressureDataContainer.appendChild(pressureParagraph);
-    pressureDataContainer.appendChild(pressureValueParagraph);
+    pressureDataContainer.appendChild(pressureValueSpan);
+    pressureDataContainer.appendChild(pressureValueUnitSpan);
 
     currentUvIndexContainer.appendChild(uvIndexIcon);
     currentUvIndexContainer.appendChild(uvIndexDataContainer);
     uvIndexDataContainer.appendChild(uvIndexParagraph);
-    uvIndexDataContainer.appendChild(uvIndexValueParagraph);
+    uvIndexDataContainer.appendChild(uvIndexValueSpan);
 
     return currentWeatherDataContainer;
 }
 
 //Current Weather UI Element Getters
+//Getters for elements that display data values
 export function getCurrentLocationElement() {
     return document.querySelector('#current-location');
 }
@@ -176,16 +202,8 @@ export function getCurrentTemperatureElement() {
     return document.querySelector('#current-temperature');
 }
 
-export function getCurrentTemperatureUnitElement() {
-    return document.querySelector('#current-temperature-unit');
-}
-
 export function getCurrentFeelsLikeElement() {
     return document.querySelector('#current-feels-like');
-}
-
-export function getCurrentFeelsLikeUnitElement() {
-    return document.querySelector('#current-feels-like-unit');
 }
 
 export function getCurrentWindElement() {
@@ -204,5 +222,23 @@ export function getCurrentUvIndexElement() {
     return document.querySelector('#current-uv');
 }
 
+//Getters for elements that display data units
+export function getCurrentTemperatureUnitElement() {
+    return document.querySelector('#current-temperature-unit');
+}
 
+export function getCurrentFeelsLikeUnitElement() {
+    return document.querySelector('#current-feels-like-unit');
+}
 
+export function getCurrentWindUnitElement() {
+    return document.querySelector('#current-wind-unit');
+}
+
+export function getCurrentHumidityUnitElement() {
+    return document.querySelector('#current-humidity-unit');
+}
+
+export function getCurrentPressureUnitElement() {
+    return document.querySelector('#current-pressure-unit');
+}

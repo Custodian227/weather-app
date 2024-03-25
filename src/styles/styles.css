@@ -70,6 +70,10 @@ main {
     margin: auto;
 }
 
+#current {
+    margin-bottom: 4rem;
+}
+
 #current-location-data-container {
     margin-bottom: 2rem;
 }
@@ -87,7 +91,7 @@ main {
 
 #right-now {
     font-size: 1.5rem;    
-    margin: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 #current-weather-icon-container {
@@ -96,7 +100,7 @@ main {
 }
 
 #current-weather-icon {
-    height: 100px;
+    height: 80px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
@@ -105,7 +109,7 @@ main {
     display: flex;
     justify-content: center;
     font-size: 1.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 #current-temperature-container {
@@ -141,7 +145,7 @@ main {
 
 #current-additional {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 #current-additional > div{
@@ -149,6 +153,22 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#current-wind-unit {
+    margin-left: 0.33rem;
+}
+
+#current-humidity-unit {
+    margin-left: 0.33rem;
+}
+
+#current-pressure-unit {
+    margin-left: 0.33rem;
+}
+
+#current-uv-unit {
+    margin-left: 0.33rem;
 }
 
 .additional-label {
@@ -163,6 +183,48 @@ main {
     margin-right: 1rem;
 }
 
+#three-day-forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.daily-forecast-header {
+    margin-bottom: 1.75rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.daily-forecast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.daily-day {
+    font-size: 1.2rem;
+}
+
+.daily-weather-icon {
+    width: 64px;
+    aspect-ratio: 1 / 1;
+}
+
+.daily-condition {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.daily-average-temperature {
+    font-size: 2rem;
+}
+
+.daily-average-temperature-unit {
+    margin-left: 0.33rem;
+    letter-spacing: -5px;
+    font-size: 2rem;
+}
 
 
 
