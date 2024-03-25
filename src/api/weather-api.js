@@ -67,7 +67,7 @@ export function getFirstDayData(data) {
     const firstDayData = data.forecast.forecastday[0];
 
     return {
-        date: 'Today',
+        date: firstDayData.date,
         weatherIconURL: `https:${firstDayData.day.condition.icon}`,
         condition: firstDayData.day.condition.text,
         averageTemperatureCelsius: firstDayData.day.avgtemp_c,

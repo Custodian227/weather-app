@@ -64,6 +64,32 @@ header {
     border-radius: 3px;
 }
 
+#search-button:active {
+    background-color: black;
+}
+
+#measurement-system-section {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#metric-system-button {
+    padding: 0.5rem;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 3px;
+}
+
+#imperial-system-button {
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--main-app-color);
+    border: none;
+    color: white;
+    border-radius: 3px;
+}
+
 main {
     width: max(50%, 500px);
     padding: 2rem 0rem;

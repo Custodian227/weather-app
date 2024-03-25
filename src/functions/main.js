@@ -4,7 +4,7 @@ import { getFirstDayForecastElement, getSecondDayForecastElement, getThirdDayFor
 import { getDayName } from "../helper/date";
 import { humidityUnit, pressureUnits, temperatureUnits, windSpeedUnits } from "../units/units";
 
-export function updateWeatherForecast(location) {
+export function updateWeatherForecast(location, measurementSystem) {
     getWeatherForecastData(location)
         .then((data) => {
             //Current weather data
@@ -18,18 +18,12 @@ export function updateWeatherForecast(location) {
             const currentUvIndexData = getCurrentUvIndex(data);
             const currentFeelsLikeTemperatureData = getCurrentFeelsLikeTemperature(data);
 
-            console.log(data);
             //Current weather data values display
             getCurrentLocationElement().textContent = `${currentLocationData.city}, ${currentLocationData.country}`;
             getCurrentWeatherIconElement().src = `${currentWeatherIconData}`;
             getCurrentConditionElement().textContent = `${currentConditionData}`;
 
-            getCurrentTemperatureElement().textContent = `${currentTemperatureData.temperatureCelsius}`;
-            getCurrentFeelsLikeElement().textContent = `Feels like: ${currentFeelsLikeTemperatureData.feelsLikeCelsius}`;
-
-            getCurrentWindElement().textContent = `${currentWindData.windKph}`;
             getCurrentHumidityElement().textContent = `${currentHumidityData}`;
-            getCurrentPressureElement().textContent = `${currentPressureData.pressureMbar}`;
             getCurrentUvIndexElement().textContent = `${currentUvIndexData}`;
 
             //Forecast data display
@@ -41,38 +35,75 @@ export function updateWeatherForecast(location) {
             const secondDayContainer = getSecondDayForecastElement();
             const thirdDayContainer = getThirdDayForecastElement();
 
+            const firstDay = getDayName(firstDayData.date);
             const secondDay = getDayName(secondDayData.date);
             const thirdDay = getDayName(thirdDayData.date);
 
-            firstDayContainer.children[0].textContent = firstDayData.date;
+            firstDayContainer.children[0].textContent = firstDay;
             firstDayContainer.children[1].src = firstDayData.weatherIconURL;
             firstDayContainer.children[2].textContent = firstDayData.condition;
-            firstDayContainer.children[3].children[0].textContent = firstDayData.averageTemperatureCelsius;
-            firstDayContainer.children[3].children[1].textContent = temperatureUnits.celsius;
 
             secondDayContainer.children[0].textContent = secondDay;
             secondDayContainer.children[1].src = secondDayData.weatherIconURL;
             secondDayContainer.children[2].textContent = secondDayData.condition;
-            secondDayContainer.children[3].children[0].textContent = secondDayData.averageTemperatureCelsius;
-            secondDayContainer.children[3].children[1].textContent = temperatureUnits.celsius;
 
             thirdDayContainer.children[0].textContent = thirdDay;
             thirdDayContainer.children[1].src = thirdDayData.weatherIconURL;
             thirdDayContainer.children[2].textContent = thirdDayData.condition;
-            thirdDayContainer.children[3].children[0].textContent = thirdDayData.averageTemperatureCelsius;
-            thirdDayContainer.children[3].children[1].textContent = temperatureUnits.celsius;
 
-            setMetricSystemUnits();
 
+            if (measurementSystem === 'Metric') {
+                getCurrentTemperatureElement().textContent = `${currentTemperatureData.temperatureCelsius}`;
+                getCurrentFeelsLikeElement().textContent = `Feels like: ${currentFeelsLikeTemperatureData.feelsLikeCelsius}`;
+
+                getCurrentWindElement().textContent = `${currentWindData.windKph}`;
+                getCurrentPressureElement().textContent = `${currentPressureData.pressureMbar}`;
+
+                firstDayContainer.children[3].children[0].textContent = firstDayData.averageTemperatureCelsius;
+                firstDayContainer.children[3].children[1].textContent = temperatureUnits.celsius;
+
+                secondDayContainer.children[3].children[0].textContent = secondDayData.averageTemperatureCelsius;
+                secondDayContainer.children[3].children[1].textContent = temperatureUnits.celsius;
+
+                thirdDayContainer.children[3].children[0].textContent = thirdDayData.averageTemperatureCelsius;
+                thirdDayContainer.children[3].children[1].textContent = temperatureUnits.celsius;
+
+                displayMetricSystemUnits();
+            } else if (measurementSystem === 'Imperial') {
+                getCurrentTemperatureElement().textContent = `${currentTemperatureData.temperatureFahrenheit}`;
+                getCurrentFeelsLikeElement().textContent = `Feels like: ${currentFeelsLikeTemperatureData.feelsLikeFahrenheit}`;
+
+                getCurrentWindElement().textContent = `${currentWindData.windMph}`;
+                getCurrentPressureElement().textContent = `${currentPressureData.pressureIn}`;
+
+                firstDayContainer.children[3].children[0].textContent = firstDayData.averageTemperatureFahrenheit;
+                firstDayContainer.children[3].children[1].textContent = temperatureUnits.fahrenheit;
+
+                secondDayContainer.children[3].children[0].textContent = secondDayData.averageTemperatureFahrenheit;
+                secondDayContainer.children[3].children[1].textContent = temperatureUnits.fahrenheit;
+
+                thirdDayContainer.children[3].children[0].textContent = thirdDayData.averageTemperatureFahrenheit;
+                thirdDayContainer.children[3].children[1].textContent = temperatureUnits.fahrenheit;
+
+                displayImperialSystemUnits();
+            }
         }).catch((error) => {
             console.log(error);
         });
 }
 
-function setMetricSystemUnits() {
+function displayMetricSystemUnits() {
     getCurrentTemperatureUnitElement().textContent = `${temperatureUnits.celsius}`;
     getCurrentFeelsLikeUnitElement().textContent = `${temperatureUnits.celsius}`;
     getCurrentWindUnitElement().textContent = windSpeedUnits.kph;
     getCurrentHumidityUnitElement().textContent = humidityUnit;
     getCurrentPressureUnitElement().textContent = pressureUnits.mbar;
+}
+
+function displayImperialSystemUnits() {
+    getCurrentTemperatureUnitElement().textContent = `${temperatureUnits.fahrenheit}`;
+    getCurrentFeelsLikeUnitElement().textContent = `${temperatureUnits.fahrenheit}`;
+    getCurrentWindUnitElement().textContent = windSpeedUnits.mph;
+    getCurrentHumidityUnitElement().textContent = humidityUnit;
+    getCurrentPressureUnitElement().textContent = pressureUnits.inches;
 }
